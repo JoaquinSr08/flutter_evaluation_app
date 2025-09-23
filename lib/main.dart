@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'screens/login_screen.dart';
+
+void main() {
+  runApp(const TaskEvaluationsApp());
+}
+
+class TaskEvaluationsApp extends StatelessWidget {
+  const TaskEvaluationsApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Sistema de Evaluaciones',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFE53E3E), 
+        ),
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFE53E3E),
+          foregroundColor: Colors.white,
+          elevation: 4,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFE53E3E),
+            foregroundColor: Colors.white,
+          ),
+        ),
+        checkboxTheme: CheckboxThemeData(
+          fillColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return const Color(0xFFE53E3E);
+            }
+            return null;
+          }),
+        ),
+        chipTheme: ChipThemeData(
+          selectedColor: const Color(0xFFE53E3E).withOpacity(0.2),
+          checkmarkColor: const Color(0xFFE53E3E),
+        ),
+      ),
+      home: const LoginScreen(),
+    );
+  }
+}
