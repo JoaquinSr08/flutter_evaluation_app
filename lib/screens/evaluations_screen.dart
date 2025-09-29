@@ -216,15 +216,24 @@ class _EvaluationsScreenState extends State<EvaluationsScreen> {
               children: FilterType.values.map((filter) {
                 final isSelected = _currentFilter == filter;
                 String label;
+                Color selectedColor;
+                Color checkmarkColor;
+                
                 switch (filter) {
                   case FilterType.todas:
                     label = 'Todas';
+                    selectedColor = Colors.blue.withOpacity(0.2);
+                    checkmarkColor = Colors.blue;
                     break;
                   case FilterType.pendientes:
                     label = 'Pendientes';
+                    selectedColor = const Color(0xFFE53E3E).withOpacity(0.2); // Rojizo
+                    checkmarkColor = const Color(0xFFE53E3E);
                     break;
                   case FilterType.completas:
                     label = 'Completas';
+                    selectedColor = Colors.green.withOpacity(0.2); // Verde
+                    checkmarkColor = Colors.green;
                     break;
                 }
 
@@ -238,8 +247,8 @@ class _EvaluationsScreenState extends State<EvaluationsScreen> {
                         _currentFilter = filter;
                       });
                     },
-                    selectedColor: const Color(0xFFE53E3E).withOpacity(0.2),
-                    checkmarkColor: const Color(0xFFE53E3E),
+                    selectedColor: selectedColor,
+                    checkmarkColor: checkmarkColor,
                   ),
                 );
               }).toList(),
