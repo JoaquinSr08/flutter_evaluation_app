@@ -2,14 +2,14 @@ class Evaluation {
     final String id;
     final String titulo;
     final String? nota;
-    final DateTime fechaEntrega;
+    final DateTime? fechaEntrega;
     bool isDone;
 
     Evaluation({
         required this.id,
         required this.titulo,
         this.nota,
-        required this.fechaEntrega,
+        this.fechaEntrega,
         this.isDone = false,
     });
 
@@ -55,5 +55,5 @@ enum EvaluationStatus{
 enum FilterType{
     todas,
     pendientes,
-    completadas,
+    completas,
 }
