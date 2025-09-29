@@ -5,10 +5,7 @@ import '../models/evaluation.dart';
 class NewEvaluationModal extends StatefulWidget {
   final Function(Evaluation) onEvaluationCreated;
 
-  const NewEvaluationModal({
-    super.key,
-    required this.onEvaluationCreated,
-  });
+  const NewEvaluationModal({super.key, required this.onEvaluationCreated});
 
   @override
   State<NewEvaluationModal> createState() => _NewEvaluationModalState();
@@ -37,9 +34,9 @@ class _NewEvaluationModalState extends State<NewEvaluationModal> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color(0xFFE53E3E),
-            ),
+            colorScheme: Theme.of(
+              context,
+            ).colorScheme.copyWith(primary: const Color(0xFFE53E3E)),
           ),
           child: child!,
         );
@@ -58,8 +55,8 @@ class _NewEvaluationModalState extends State<NewEvaluationModal> {
       final evaluation = Evaluation(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         titulo: _tituloController.text.trim(),
-        nota: _notaController.text.trim().isEmpty 
-            ? null 
+        nota: _notaController.text.trim().isEmpty
+            ? null
             : _notaController.text.trim(),
         fechaEntrega: _selectedDate,
         isDone: false,
@@ -70,7 +67,9 @@ class _NewEvaluationModalState extends State<NewEvaluationModal> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Evaluación "${evaluation.titulo}" creada exitosamente'),
+          content: Text(
+            'Evaluación "${evaluation.titulo}" creada exitosamente',
+          ),
           backgroundColor: Colors.green,
           duration: const Duration(seconds: 2),
         ),
@@ -115,7 +114,7 @@ class _NewEvaluationModalState extends State<NewEvaluationModal> {
                   ),
                 ],
               ),
-              
+
               const SizedBox(height: 24),
 
               TextFormField(
@@ -187,8 +186,8 @@ class _NewEvaluationModalState extends State<NewEvaluationModal> {
                             : 'Fecha: ${DateFormat('dd/MM/yyyy').format(_selectedDate!)}',
                         style: TextStyle(
                           fontSize: 16,
-                          color: _selectedDate == null 
-                              ? Colors.grey[600] 
+                          color: _selectedDate == null
+                              ? Colors.grey[600]
                               : Colors.black87,
                         ),
                       ),
@@ -245,9 +244,7 @@ class _NewEvaluationModalState extends State<NewEvaluationModal> {
                       ),
                       child: const Text(
                         'Crear',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),

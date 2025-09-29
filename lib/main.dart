@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/login_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const TaskEvaluationsApp());
@@ -14,9 +16,7 @@ class TaskEvaluationsApp extends StatelessWidget {
       title: 'Sistema de Evaluaciones',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFE53E3E), 
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFE53E3E)),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFFE53E3E),
@@ -42,6 +42,12 @@ class TaskEvaluationsApp extends StatelessWidget {
           checkmarkColor: const Color(0xFFE53E3E),
         ),
       ),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('es'), Locale('en')],
       home: const LoginScreen(),
     );
   }
